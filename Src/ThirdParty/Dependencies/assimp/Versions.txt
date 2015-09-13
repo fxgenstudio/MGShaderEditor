@@ -1,0 +1,7 @@
+assimp from https://github.com/assimp/assimp
+commit 04f0075b6306aa0bb3a1c749d5e1788d56a5a923
+plus the fix from https://github.com/assimp/assimp/pull/274
+
+assimp-net from http://code.google.com/p/assimp-net/
+revision 101
+

@@ -1,0 +1,229 @@
+﻿//////////////////////////////////////////////////////////////////////////
+// Notes:
+//    - Camera Zoom => Control key + Vertical Mouse Dragging
+//    - Camera Rotation => Horizontal or Vertical Mouse Dragging
+//
+//////////////////////////////////////////////////////////////////////////
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Primitives3D;
+using System.Diagnostics;
+
+namespace MGShaderEditor
+{
+  /// <summary>
+  /// This is the main type for your game.
+  /// </summary>
+  public class Game1 : Game
+  {
+
+    #region -- Fields --
+    GraphicsDeviceManager m_graphics;
+    SpriteBatch m_spriteBatch;
+    Effect m_curEffect;
+    float m_fmodelRotation;
+
+    OrbitCamera m_camera;
+
+    Matrix m_World;
+
+    MouseState m_prevMouseState;
+    private bool m_bDraggingCamera;
+    private int m_nStartDragX;
+    private int m_nStartDragY;
+    private bool m_bZoomingCamera;
+
+    #endregion
+
+    #region -- Properties --
+    public GeometricPrimitive CurPrimitive { get; set; }
+    #endregion
+
+    public Game1()
+    {
+      m_graphics = new GraphicsDeviceManager(this);
+      m_graphics.PreferredBackBufferWidth = 320;
+      m_graphics.PreferredBackBufferHeight = 200;
+
+      Content.RootDirectory = "Content";
+    }
+
+    /// <summary>
+    /// Create Effect from 2MGFX bytes code
+    /// </summary>
+    public void SetEffectBytesCode(byte[] _byCode)
+    {
+      m_curEffect = new Effect(m_graphics.GraphicsDevice, _byCode);
+    }
+
+    /// <summary>
+    /// Allows the game to perform any initialization it needs to before starting to run.
+    /// This is where it can query for any required services and load any non-graphic
+    /// related content.  Calling base.Initialize will enumerate through any components
+    /// and initialize them as well.
+    /// </summary>
+    protected override void Initialize()
+    {
+      // TODO: Add your initialization logic here
+
+      base.Initialize();
+    }
+
+    /// <summary>
+    /// LoadContent will be called once per game and is the place to load
+    /// all of your content.
+    /// </summary>
+    protected override void LoadContent()
+    {
+      // Create a new SpriteBatch, which can be used to draw textures.
+      m_spriteBatch = new SpriteBatch(GraphicsDevice);
+
+      m_camera = new OrbitCamera(this);
+      m_camera.Update(0);
+
+      m_World = Matrix.Identity;
+
+      CurPrimitive = null;
+
+
+    }
+
+    /// <summary>
+    /// UnloadContent will be called once per game and is the place to unload
+    /// game-specific content.
+    /// </summary>
+    protected override void UnloadContent()
+    {
+      // TODO: Unload any non ContentManager content here
+    }
+
+    /// <summary>
+    /// Allows the game to run logic such as updating the world,
+    /// checking for collisions, gathering input, and playing audio.
+    /// </summary>
+    /// <param name="gameTime">Provides a snapshot of timing values.</param>
+    protected override void Update(GameTime gameTime)
+    {
+      if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        Exit();
+
+      //Inputs
+      var ms = Mouse.GetState();
+      var ks = Keyboard.GetState();
+
+      //LMouse Down
+      if (ms.LeftButton == ButtonState.Pressed && m_prevMouseState.LeftButton == ButtonState.Released)
+      {
+        
+        m_nStartDragX = ms.X;
+        m_nStartDragY = ms.Y;
+
+        if (ks.IsKeyDown(Keys.LeftControl)==true)
+        {
+          m_bZoomingCamera = true;
+        }
+        else
+        {
+          m_bDraggingCamera = true;
+        }
+      }
+
+      //LMouse Up
+      if (ms.LeftButton == ButtonState.Released && m_prevMouseState.LeftButton == ButtonState.Pressed)
+      {
+        m_bDraggingCamera = false;
+        m_bZoomingCamera = false;
+      }
+
+      //Mouse Move and camera dragging
+      if (m_bDraggingCamera == true)
+      {
+        float turnSpeed = 8f;
+
+        float offsetX = ((ms.X - m_nStartDragX) * turnSpeed * 0.001f); // pitch degree
+        float offsetY = ((ms.Y - m_nStartDragY) * turnSpeed * 0.001f); // yaw degree
+
+        var a = m_camera.AngleRad;
+        a.X -= offsetY;
+        a.Y -= offsetX;
+
+        a.Y = MathHelper.Clamp(a.Y, 0, MathHelper.Pi * 2);
+        a.X = MathHelper.Clamp(a.X, -(MathHelper.PiOver2 - 0.1f), (MathHelper.PiOver2 - 0.1f));
+
+        m_camera.AngleRad = a;
+
+        m_nStartDragX = ms.X;
+        m_nStartDragY = ms.Y;
+      }
+
+      //Mouse Move and camera zooming 
+      if (m_bZoomingCamera==true)
+      {
+        float speed = 8f;
+        float offsetY = ((ms.Y - m_nStartDragY) * speed * 0.001f);
+
+        m_camera.TargetDistance += offsetY;
+        m_camera.TargetDistance  = MathHelper.Clamp(m_camera.TargetDistance, 1.0f, 10);
+
+        m_nStartDragY = ms.Y;
+      }
+
+      //Mouse Wheel
+      var wheelDelta = m_prevMouseState.ScrollWheelValue - ms.ScrollWheelValue;
+      if (wheelDelta != 0)
+      {
+        m_camera.TargetDistance += (wheelDelta/100.0f);
+        m_camera.TargetDistance = MathHelper.Clamp(m_camera.TargetDistance, 1.0f, 10);
+      }
+
+      m_prevMouseState = ms;
+
+      //Update Camera Matrices
+      m_camera.Update(0);
+
+      //Update Model World Matrice
+      if (m_bDraggingCamera == false)
+        m_fmodelRotation += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
+
+      m_World = Matrix.CreateRotationX(m_fmodelRotation) * Matrix.CreateRotationY(m_fmodelRotation) * Matrix.CreateRotationZ(m_fmodelRotation);
+
+
+      base.Update(gameTime);
+    }
+
+    /// <summary>
+    /// This is called when the game should draw itself.
+    /// </summary>
+    /// <param name="gameTime">Provides a snapshot of timing values.</param>
+    protected override void Draw(GameTime gameTime)
+    {
+      GraphicsDevice.Clear(Color.CornflowerBlue);
+
+      if (m_curEffect != null)
+      {
+        var p1 = m_curEffect.Parameters["xWorld"];
+        if (p1 != null)
+          p1.SetValue(m_World);
+
+        var p2 = m_curEffect.Parameters["xView"];
+        if (p2 != null)
+          p2.SetValue(m_camera.View);
+
+        var p3 = m_curEffect.Parameters["xProjection"];
+        if (p3 != null)
+          p3.SetValue(m_camera.Projection);
+
+        m_curEffect.CurrentTechnique.Passes[0].Apply();
+
+        CurPrimitive.Draw(m_curEffect);
+
+      }
+
+      base.Draw(gameTime);
+    }
+
+
+  }
+}

@@ -1,0 +1,997 @@
+﻿<h1 class="title">HLSL Help</h1>
+
+<div id="mainSection">
+    <div class="clsServerSDKContent">
+
+    </div>
+    <p>
+        Functions available in HLSL.
+    </p>
+    <div class="contentTableWrapper">
+        <table>
+            <tbody>
+                <tr><th>Name</th><th>Description</th><th>Minimum shader model</th></tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff728669.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">abort</strong></a>
+                    </td>
+                    <td>Terminates the current draw or dispatch call being executed.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509562.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">abs</strong></a>
+                    </td>
+                    <td>Absolute value (per component).</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509563.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">acos</strong></a>
+                    </td>
+                    <td>Returns the arccosine of each component of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509564.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">all</strong></a>
+                    </td>
+                    <td>Test if all components of x are nonzero.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471350.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">AllMemoryBarrier</strong></a>
+                    </td>
+                    <td>Blocks execution of all threads in a group until all memory accesses have been completed.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471351.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">AllMemoryBarrierWithGroupSync</strong></a>
+                    </td>
+                    <td>Blocks execution of all threads in a group until all memory accesses have been completed and all threads in the group have reached this call.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509565.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">any</strong></a>
+                    </td>
+                    <td>Test if any component of x is nonzero.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/dd607357.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">asdouble</strong></a>
+                    </td>
+                    <td>Reinterprets a cast value into a double.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509570.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">asfloat</strong></a>
+                    </td>
+                    <td>Convert the input type to a float.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509571.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">asin</strong></a>
+                    </td>
+                    <td>Returns the arcsine of each component of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509572.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">asint</strong></a>
+                    </td>
+                    <td>Convert the input type to an integer.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471354.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">asuint</strong></a>
+                    </td>
+                    <td>Reinterprets the bit pattern of a 64-bit type to a uint.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509573.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">asuint</strong></a>
+                    </td>
+                    <td>Convert the input type to an unsigned integer.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509574.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">atan</strong></a>
+                    </td>
+                    <td>Returns the arctangent of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509575.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">atan2</strong></a>
+                    </td>
+                    <td>Returns the arctangent of of two values (x,y).</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509577.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ceil</strong></a>
+                    </td>
+                    <td>Returns the smallest integer which is greater than or equal to x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/dn292083.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">CheckAccessFullyMapped</strong></a>
+                    </td>
+                    <td>Determines whether all values from a <strong>Sample</strong> or <strong>Load</strong> operation accessed mapped tiles in a <a href="https://msdn.microsoft.com/en-us/library/dn312084.aspx#tile">tiled resource</a>.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb204824.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">clamp</strong></a>
+                    </td>
+                    <td>Clamps x to the range [min, max].</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb204826.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">clip</strong></a>
+                    </td>
+                    <td>Discards the current pixel, if any component of x is less than zero.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509583.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">cos</strong></a>
+                    </td>
+                    <td>Returns the cosine of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509584.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">cosh</strong></a>
+                    </td>
+                    <td>Returns the hyperbolic cosine of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471355.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">countbits</strong></a>
+                    </td>
+                    <td>Counts the number of bits (per component) in the input integer.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509585.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">cross</strong></a>
+                    </td>
+                    <td>Returns the cross product of two 3D vectors.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509586.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">D3DCOLORtoUBYTE4</strong></a>
+                    </td>
+                    <td>Swizzles and scales components of the 4D vector xto compensate for the lack of UBYTE4 support in some hardware.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509588.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ddx</strong></a>
+                    </td>
+                    <td>Returns the partial derivative of x with respect to the screen-space x-coordinate.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471361.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ddx_coarse</strong></a>
+                    </td>
+                    <td>Computes a low precision partial derivative with respect to the screen-space x-coordinate.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471362.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ddx_fine</strong></a>
+                    </td>
+                    <td>Computes a high precision partial derivative with respect to the screen-space x-coordinate.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509589.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ddy</strong></a>
+                    </td>
+                    <td>Returns the partial derivative of x with respect to the screen-space y-coordinate.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471364.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ddy_coarse</strong></a>
+                    </td>
+                    <td>Computes a low precision partial derivative with respect to the screen-space y-coordinate.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471365.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ddy_fine</strong></a>
+                    </td>
+                    <td>Computes a high precision partial derivative with respect to the screen-space y-coordinate.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509590.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">degrees</strong></a>
+                    </td>
+                    <td>Converts x from radians to degrees.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509591.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">determinant</strong></a>
+                    </td>
+                    <td>Returns the determinant of the square matrix m.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471366.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceMemoryBarrier</strong></a>
+                    </td>
+                    <td>Blocks execution of all threads in a group until all device memory accesses have been completed.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471367.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">DeviceMemoryBarrierWithGroupSync</strong></a>
+                    </td>
+                    <td>Blocks execution of all threads in a group until all device memory accesses have been completed and all threads in the group have reached this call.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509592.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">distance</strong></a>
+                    </td>
+                    <td>Returns the distance between two points.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509594.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">dot</strong></a>
+                    </td>
+                    <td>Returns the dot product of two vectors.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471368.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">dst</strong></a>
+                    </td>
+                    <td>Calculates a distance vector.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff728750.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">errorf</strong></a>
+                    </td>
+                    <td>Submits an error message to the information queue.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471394.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">EvaluateAttributeAtCentroid</strong></a>
+                    </td>
+                    <td>Evaluates at the pixel centroid.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471395.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">EvaluateAttributeAtSample</strong></a>
+                    </td>
+                    <td>Evaluates at the indexed sample location.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471396.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">EvaluateAttributeSnapped</strong></a>
+                    </td>
+                    <td>Evaluates at the pixel centroid with an offset.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509595.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">exp</strong></a>
+                    </td>
+                    <td>Returns the base-e exponent.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509596.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">exp2</strong></a>
+                    </td>
+                    <td>Base 2 exponent (per component).</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471397.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">f16tof32</strong></a>
+                    </td>
+                    <td>Converts the float16 stored in the low-half of the uint to a float.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471399.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">f32tof16</strong></a>
+                    </td>
+                    <td>Converts an input into a float16 type.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509598.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">faceforward</strong></a>
+                    </td>
+                    <td>Returns -n * sign(dot(i, ng)).</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471400.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">firstbithigh</strong></a>
+                    </td>
+                    <td>Gets the location of the first set bit starting from the highest order bit and working downward, per component.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471401.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">firstbitlow</strong></a>
+                    </td>
+                    <td>Returns the location of the first set bit starting from the lowest order bit and working upward, per component.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509599.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">floor</strong></a>
+                    </td>
+                    <td>Returns the greatest integer which is less than or equal to x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/hh768893.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fma</strong></a>
+                    </td>
+                    <td>Returns the double-precision fused multiply-addition of a * b + c.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509601.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fmod</strong></a>
+                    </td>
+                    <td>Returns the floating point remainder of x/y.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509603.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">frac</strong></a>
+                    </td>
+                    <td>Returns the fractional part of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509604.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">frexp</strong></a>
+                    </td>
+                    <td>Returns the mantissa and exponent of x.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509608.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">fwidth</strong></a>
+                    </td>
+                    <td>Returns abs(ddx(x)) + abs(ddy(x))</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb943996.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetRenderTargetSampleCount</strong></a>
+                    </td>
+                    <td>Returns the number of render-target samples.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb943997.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GetRenderTargetSamplePosition</strong></a>
+                    </td>
+                    <td>Returns a sample position (x,y) for a given sample index.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471403.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GroupMemoryBarrier</strong></a>
+                    </td>
+                    <td>Blocks execution of all threads in a group until all group shared accesses have been completed.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471404.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">GroupMemoryBarrierWithGroupSync</strong></a>
+                    </td>
+                    <td>Blocks execution of all threads in a group until all group shared accesses have been completed and all threads in the group have reached this call.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471406.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedAdd</strong></a>
+                    </td>
+                    <td>Performs a guaranteed atomic add of value to the dest resource variable.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471407.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedAnd</strong></a>
+                    </td>
+                    <td>Performs a guaranteed atomic and.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471409.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedCompareExchange</strong></a>
+                    </td>
+                    <td>Atomically compares the input to the comparison value and exchanges the result.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471410.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedCompareStore</strong></a>
+                    </td>
+                    <td>Atomically compares the input to the comparison value.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471411.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedExchange</strong></a>
+                    </td>
+                    <td>Assigns value to dest and returns the original value. </td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471412.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedMax</strong></a>
+                    </td>
+                    <td>Performs a guaranteed atomic max.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471413.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedMin</strong></a>
+                    </td>
+                    <td>Performs a guaranteed atomic min.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471414.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedOr</strong></a>
+                    </td>
+                    <td>Performs a guaranteed atomic or.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471415.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">InterlockedXor</strong></a>
+                    </td>
+                    <td>Performs a guaranteed atomic xor.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509612.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">isfinite</strong></a>
+                    </td>
+                    <td>Returns true if x is finite, false otherwise.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509613.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">isinf</strong></a>
+                    </td>
+                    <td>Returns true if x is +INF or -INF, false otherwise.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509614.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">isnan</strong></a>
+                    </td>
+                    <td>Returns true if x is NAN or QNAN, false otherwise.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509616.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ldexp</strong></a>
+                    </td>
+                    <td>Returns x * 2exp</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509617.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">length</strong></a>
+                    </td>
+                    <td>Returns the length of the vector v.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509618.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">lerp</strong></a>
+                    </td>
+                    <td>Returns x + s(y - x).</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509619.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">lit</strong></a>
+                    </td>
+                    <td>Returns a lighting vector (ambient, diffuse, specular, 1)</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509620.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">log</strong></a>
+                    </td>
+                    <td>Returns the base-e logarithm of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509621.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">log10</strong></a>
+                    </td>
+                    <td>Returns the base-10 logarithm of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509622.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">log2</strong></a>
+                    </td>
+                    <td>Returns the base-2 logarithm of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471418.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">mad</strong></a>
+                    </td>
+                    <td>Performs an arithmetic multiply/add operation on three values.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509624.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">max</strong></a>
+                    </td>
+                    <td>Selects the greater of x and y.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509625.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">min</strong></a>
+                    </td>
+                    <td>Selects the lesser of x and y.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509627.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">modf</strong></a>
+                    </td>
+                    <td>Splits the value x into fractional and integer parts.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/hh768927.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">msad4</strong></a>
+                    </td>
+                    <td>Compares a 4-byte reference value and an 8-byte source value and accumulates a vector of 4 sums.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509628.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">mul</strong></a>
+                    </td>
+                    <td>Performs matrix multiplication using x and y.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509629.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">noise</strong></a>
+                    </td>
+                    <td>Generates a random value using the Perlin-noise algorithm.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509630.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">normalize</strong></a>
+                    </td>
+                    <td>Returns a normalized vector.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509636.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">pow</strong></a>
+                    </td>
+                    <td>Returns x<span class="sup">y</span>.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff728755.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">printf</strong></a>
+                    </td>
+                    <td>Submits a custom shader message to the information queue.</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471426.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Process2DQuadTessFactorsAvg</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a quad patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471427.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Process2DQuadTessFactorsMax</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a quad patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471428.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">Process2DQuadTessFactorsMin</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a quad patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471429.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessIsolineTessFactors</strong></a>
+                    </td>
+                    <td>Generates the rounded tessellation factors for an isoline.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471430.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessQuadTessFactorsAvg</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a quad patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471431.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessQuadTessFactorsMax</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a quad patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471432.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessQuadTessFactorsMin</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a quad patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471433.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessTriTessFactorsAvg</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a tri patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471434.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessTriTessFactorsMax</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a tri patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471435.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">ProcessTriTessFactorsMin</strong></a>
+                    </td>
+                    <td>Generates the corrected tessellation factors for a tri patch.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509637.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">radians</strong></a>
+                    </td>
+                    <td>Converts x from degrees to radians.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471436.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">rcp</strong></a>
+                    </td>
+                    <td>Calculates a fast, approximate, per-component reciprocal.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509639.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">reflect</strong></a>
+                    </td>
+                    <td>Returns a reflection vector.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509640.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">refract</strong></a>
+                    </td>
+                    <td>Returns the refraction vector.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471437.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">reversebits</strong></a>
+                    </td>
+                    <td>Reverses the order of the bits, per component.</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509642.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">round</strong></a>
+                    </td>
+                    <td>Rounds x to the nearest integer</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509643.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">rsqrt</strong></a>
+                    </td>
+                    <td>Returns 1 / sqrt(x)</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509645.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">saturate</strong></a>
+                    </td>
+                    <td>Clamps x to the range [0, 1]</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509649.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">sign</strong></a>
+                    </td>
+                    <td>Computes the sign of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509651.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">sin</strong></a>
+                    </td>
+                    <td>Returns the sine of x</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509652.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">sincos</strong></a>
+                    </td>
+                    <td>Returns the sine and cosine of x.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509653.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">sinh</strong></a>
+                    </td>
+                    <td>Returns the hyperbolic sine of x</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509658.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">smoothstep</strong></a>
+                    </td>
+                    <td>Returns a smooth Hermite interpolation between 0 and 1.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509662.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">sqrt</strong></a>
+                    </td>
+                    <td>Square root (per component)</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509665.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">step</strong></a>
+                    </td>
+                    <td>Returns (x &gt;= a) ? 1 : 0</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509670.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tan</strong></a>
+                    </td>
+                    <td>Returns the tangent of x</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509671.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tanh</strong></a>
+                    </td>
+                    <td>Returns the hyperbolic tangent of x</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509672.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex1D(s, t)</strong></a>
+                    </td>
+                    <td>1D texture lookup.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471388.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex1D(s, t, ddx, ddy)</strong></a>
+                    </td>
+                    <td>1D texture lookup.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509673.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex1Dbias</strong></a>
+                    </td>
+                    <td>1D texture lookup with bias.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509674.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex1Dgrad</strong></a>
+                    </td>
+                    <td>1D texture lookup with a gradient.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509675.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex1Dlod</strong></a>
+                    </td>
+                    <td>1D texture lookup with LOD.</td>
+                    <td>3¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509676.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex1Dproj</strong></a>
+                    </td>
+                    <td>1D texture lookup with projective divide.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509677.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex2D(s, t)</strong></a>
+                    </td>
+                    <td>2D texture lookup.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471389.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex2D(s, t, ddx, ddy)</strong></a>
+                    </td>
+                    <td>2D texture lookup.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509678.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex2Dbias</strong></a>
+                    </td>
+                    <td>2D texture lookup with bias.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509679.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex2Dgrad</strong></a>
+                    </td>
+                    <td>2D texture lookup with a gradient.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509680.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex2Dlod</strong></a>
+                    </td>
+                    <td>2D texture lookup with LOD.</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509681.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex2Dproj</strong></a>
+                    </td>
+                    <td>2D texture lookup with projective divide.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509682.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex3D(s, t)</strong></a>
+                    </td>
+                    <td>3D texture lookup.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471391.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex3D(s, t, ddx, ddy)</strong></a>
+                    </td>
+                    <td>3D texture lookup.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509683.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex3Dbias</strong></a>
+                    </td>
+                    <td>3D texture lookup with bias.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509684.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex3Dgrad</strong></a>
+                    </td>
+                    <td>3D texture lookup with a gradient.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509685.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex3Dlod</strong></a>
+                    </td>
+                    <td>3D texture lookup with LOD.</td>
+                    <td>3¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509686.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">tex3Dproj</strong></a>
+                    </td>
+                    <td>3D texture lookup with projective divide.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509687.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">texCUBE(s, t)</strong></a>
+                    </td>
+                    <td>Cube texture lookup.</td>
+                    <td>1¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/ff471392.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">texCUBE(s, t, ddx, ddy)</strong></a>
+                    </td>
+                    <td>Cube texture lookup.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509688.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">texCUBEbias</strong></a>
+                    </td>
+                    <td>Cube texture lookup with bias.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509689.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">texCUBEgrad</strong></a>
+                    </td>
+                    <td>Cube texture lookup with a gradient.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509690.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">texCUBElod</strong></a>
+                    </td>
+                    <td>Cube texture lookup with LOD.</td>
+                    <td>3¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509691.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">texCUBEproj</strong></a>
+                    </td>
+                    <td>Cube texture lookup with projective divide.</td>
+                    <td>2¹</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/bb509701.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">transpose</strong></a>
+                    </td>
+                    <td>Returns the transpose of the matrix m.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://msdn.microsoft.com/en-us/library/cc308065.aspx"><strong xmlns="http://www.w3.org/1999/xhtml">trunc</strong></a>
+                    </td>
+                    <td>Truncates floating-point value(s) to integer value(s)</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>&nbsp;</p>

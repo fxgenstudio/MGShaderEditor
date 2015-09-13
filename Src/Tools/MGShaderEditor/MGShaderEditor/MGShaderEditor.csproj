@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6662B67-426F-468A-B01A-0FD3ACF8B7EA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGShaderEditor</RootNamespace>
+    <AssemblyName>MGShaderEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CppNet">
+      <HintPath>..\..\..\ThirdParty\Dependencies\CppNet\CppNet.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jacobslusser.ScintillaNET.3.5.1\lib\net40\ScintillaNET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>..\..\..\ThirdParty\Dependencies\SharpDX\Windows\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.D3DCompiler">
+      <HintPath>..\..\..\ThirdParty\Dependencies\SharpDX\Windows\SharpDX.D3DCompiler.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\2MGFX\CommandLineParser.cs">
+      <Link>2MGFX\CommandLineParser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ConstantBufferData.cs">
+      <Link>2MGFX\ConstantBufferData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ConstantBufferData.mojo.cs">
+      <Link>2MGFX\ConstantBufferData.mojo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ConstantBufferData.sharpdx.cs">
+      <Link>2MGFX\ConstantBufferData.sharpdx.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ConstantBufferData.writer.cs">
+      <Link>2MGFX\ConstantBufferData.writer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\EffectObject.cs">
+      <Link>2MGFX\EffectObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\EffectObject.hlsl.cs">
+      <Link>2MGFX\EffectObject.hlsl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\EffectObject.pssl.cs">
+      <Link>2MGFX\EffectObject.pssl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\EffectObject.writer.cs">
+      <Link>2MGFX\EffectObject.writer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\IEffectCompilerOutput.cs">
+      <Link>2MGFX\IEffectCompilerOutput.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\MarshalHelper.cs">
+      <Link>2MGFX\MarshalHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\MojoShader.cs">
+      <Link>2MGFX\MojoShader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\Options.cs">
+      <Link>2MGFX\Options.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\Parser.cs">
+      <Link>2MGFX\Parser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ParseTree.cs">
+      <Link>2MGFX\ParseTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ParseTreeTools.cs">
+      <Link>2MGFX\ParseTreeTools.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\PassInfo.cs">
+      <Link>2MGFX\PassInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\Preprocessor.cs">
+      <Link>2MGFX\Preprocessor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\SamplerStateInfo.cs">
+      <Link>2MGFX\SamplerStateInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\Scanner.cs">
+      <Link>2MGFX\Scanner.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderCompilerException.cs">
+      <Link>2MGFX\ShaderCompilerException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderData.cs">
+      <Link>2MGFX\ShaderData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderData.mojo.cs">
+      <Link>2MGFX\ShaderData.mojo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderData.pssl.cs">
+      <Link>2MGFX\ShaderData.pssl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderData.sharpdx.cs">
+      <Link>2MGFX\ShaderData.sharpdx.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderData.writer.cs">
+      <Link>2MGFX\ShaderData.writer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderInfo.cs">
+      <Link>2MGFX\ShaderInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\ShaderProfile.cs">
+      <Link>2MGFX\ShaderProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\TechniqueInfo.cs">
+      <Link>2MGFX\TechniqueInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\2MGFX\TextureFilterType.cs">
+      <Link>2MGFX\TextureFilterType.cs</Link>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game1.cs" />
+    <Compile Include="NShader\EnumMap.cs" />
+    <Compile Include="NShader\ShaderToken.cs" />
+    <Compile Include="OrbitCamera.cs" />
+    <Compile Include="Primitives\BezierPrimitive.cs" />
+    <Compile Include="Primitives\CubePrimitive.cs" />
+    <Compile Include="Primitives\CylinderPrimitive.cs" />
+    <Compile Include="Primitives\GeometricPrimitive.cs" />
+    <Compile Include="Primitives\SpherePrimitive.cs" />
+    <Compile Include="Primitives\TeapotPrimitive.cs" />
+    <Compile Include="Primitives\TorusPrimitive.cs" />
+    <Compile Include="Primitives\VertexPositionNormal.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="App.ico" />
+    <Content Include="HLSLKeywords.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servicerunning.ico" />
+    <Content Include="HLSL_Help.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SimpleColor.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MonoGame.Framework\MonoGame.Framework.Windows.csproj">
+      <Project>{7de47032-a904-4c29-bd22-2d235e8d91ba}</Project>
+      <Name>MonoGame.Framework.Windows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

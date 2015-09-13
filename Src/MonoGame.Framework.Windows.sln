@@ -1,0 +1,58 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2MGFX.Windows", "Tools\2MGFX\2MGFX.Windows.csproj", "{46474D32-2E58-6957-6E64-6F7773324D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Windows", "ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGCB.Windows", "Tools\MGCB\MGCB.Windows.csproj", "{4243474D-572E-6E69-646F-77734D474342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Content.Pipeline.Windows", "MonoGame.Framework.Content.Pipeline\MonoGame.Framework.Content.Pipeline.Windows.csproj", "{B950DE10-AC5D-4BD9-B817-51247C4A732D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Windows", "MonoGame.Framework\MonoGame.Framework.Windows.csproj", "{7DE47032-A904-4C29-BD22-2D235E8D91BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Windows", "MonoGame.Framework\MonoGame.Framework.Net.Windows.csproj", "{87A71215-7CAC-4B80-9D43-1700DECFB828}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Tests.Windows", "Test\MonoGame.Tests.Windows.csproj", "{DED2DDB6-D4BE-656D-2E54-657374732E57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipeline.Windows", "Tools\Pipeline\Pipeline.Windows.csproj", "{65706950-696C-656E-2E57-696E646F7773}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46474D32-2E58-6957-6E64-6F7773324D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46474D32-2E58-6957-6E64-6F7773324D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46474D32-2E58-6957-6E64-6F7773324D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46474D32-2E58-6957-6E64-6F7773324D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4243474D-572E-6E69-646F-77734D474342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4243474D-572E-6E69-646F-77734D474342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4243474D-572E-6E69-646F-77734D474342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4243474D-572E-6E69-646F-77734D474342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B950DE10-AC5D-4BD9-B817-51247C4A732D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B950DE10-AC5D-4BD9-B817-51247C4A732D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B950DE10-AC5D-4BD9-B817-51247C4A732D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B950DE10-AC5D-4BD9-B817-51247C4A732D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED2DDB6-D4BE-656D-2E54-657374732E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED2DDB6-D4BE-656D-2E54-657374732E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED2DDB6-D4BE-656D-2E54-657374732E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED2DDB6-D4BE-656D-2E54-657374732E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65706950-696C-656E-2E57-696E646F7773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65706950-696C-656E-2E57-696E646F7773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65706950-696C-656E-2E57-696E646F7773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65706950-696C-656E-2E57-696E646F7773}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
