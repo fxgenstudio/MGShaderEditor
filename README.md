@@ -1,2 +1,3 @@
 # MGShaderEditor
-Pixel and Vertex Shader Editor for MonoGame's Effects
+Pixel and Vertex HLSL Shader Editor for MonoGame's Effects.
+
