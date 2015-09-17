@@ -1,0 +1,4 @@
+﻿V1.1
+----
+- Added Textures Slots
+- Added Effect File Loading/Saving
