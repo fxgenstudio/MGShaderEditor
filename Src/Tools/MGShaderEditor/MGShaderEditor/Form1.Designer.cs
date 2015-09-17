@@ -30,18 +30,26 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+      this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.loadToolStripMenuItemLoad = new System.Windows.Forms.ToolStripMenuItem();
+      this.saveToolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+      this.exitToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+      this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.buildShaderF5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripComboBoxModel = new System.Windows.Forms.ToolStripComboBox();
       this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.aboutToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.splitContainer2 = new System.Windows.Forms.SplitContainer();
       this.panelTextEditor = new System.Windows.Forms.Panel();
+      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabPageTexSlots = new System.Windows.Forms.TabPage();
+      this.tabPageHelp = new System.Windows.Forms.TabPage();
       this.webBrowserHelp = new System.Windows.Forms.WebBrowser();
       this._outputWindow = new System.Windows.Forms.TextBox();
-      this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exitToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-      this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.buildShaderF5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.textureSlotsUserControl1 = new MGShaderEditor.TextureSlotsUserControl();
+      this.saveAsToolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+      this.newToolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
       this.splitContainer1.Panel1.SuspendLayout();
@@ -51,6 +59,9 @@
       this.splitContainer2.Panel1.SuspendLayout();
       this.splitContainer2.Panel2.SuspendLayout();
       this.splitContainer2.SuspendLayout();
+      this.tabControl1.SuspendLayout();
+      this.tabPageTexSlots.SuspendLayout();
+      this.tabPageHelp.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -65,6 +76,57 @@
       this.menuStrip1.Size = new System.Drawing.Size(888, 27);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
+      // 
+      // fileToolStripMenuItem
+      // 
+      this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItemNew,
+            this.loadToolStripMenuItemLoad,
+            this.saveToolStripMenuItemSave,
+            this.saveAsToolStripMenuItemSaveAs,
+            this.exitToolStripMenuItemExit});
+      this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+      this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 23);
+      this.fileToolStripMenuItem.Text = "File";
+      // 
+      // loadToolStripMenuItemLoad
+      // 
+      this.loadToolStripMenuItemLoad.Name = "loadToolStripMenuItemLoad";
+      this.loadToolStripMenuItemLoad.Size = new System.Drawing.Size(152, 22);
+      this.loadToolStripMenuItemLoad.Text = "Load...";
+      this.loadToolStripMenuItemLoad.Click += new System.EventHandler(this.loadToolStripMenuItemLoad_Click);
+      // 
+      // saveToolStripMenuItemSave
+      // 
+      this.saveToolStripMenuItemSave.Name = "saveToolStripMenuItemSave";
+      this.saveToolStripMenuItemSave.Size = new System.Drawing.Size(152, 22);
+      this.saveToolStripMenuItemSave.Text = "Save";
+      this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.saveToolStripMenuItemSave_Click);
+      // 
+      // exitToolStripMenuItemExit
+      // 
+      this.exitToolStripMenuItemExit.Name = "exitToolStripMenuItemExit";
+      this.exitToolStripMenuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+      this.exitToolStripMenuItemExit.Size = new System.Drawing.Size(152, 22);
+      this.exitToolStripMenuItemExit.Text = "Exit";
+      this.exitToolStripMenuItemExit.Click += new System.EventHandler(this.Evt_Exit);
+      // 
+      // buildToolStripMenuItem
+      // 
+      this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buildShaderF5ToolStripMenuItem});
+      this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
+      this.buildToolStripMenuItem.Size = new System.Drawing.Size(46, 23);
+      this.buildToolStripMenuItem.Text = "Build";
+      // 
+      // buildShaderF5ToolStripMenuItem
+      // 
+      this.buildShaderF5ToolStripMenuItem.Image = global::MGShaderEditor.Properties.Resources.servicerunning;
+      this.buildShaderF5ToolStripMenuItem.Name = "buildShaderF5ToolStripMenuItem";
+      this.buildShaderF5ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+      this.buildShaderF5ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+      this.buildShaderF5ToolStripMenuItem.Text = "Build Shader";
+      this.buildShaderF5ToolStripMenuItem.Click += new System.EventHandler(this.buildShaderToolStripMenuItem_Click);
       // 
       // toolStripComboBoxModel
       // 
@@ -85,7 +147,7 @@
       // aboutToolStripMenuItemAbout
       // 
       this.aboutToolStripMenuItemAbout.Name = "aboutToolStripMenuItemAbout";
-      this.aboutToolStripMenuItemAbout.Size = new System.Drawing.Size(152, 22);
+      this.aboutToolStripMenuItemAbout.Size = new System.Drawing.Size(107, 22);
       this.aboutToolStripMenuItemAbout.Text = "About";
       this.aboutToolStripMenuItemAbout.Click += new System.EventHandler(this.aboutToolStripMenuItemAbout_Click);
       // 
@@ -119,7 +181,7 @@
       // 
       // splitContainer2.Panel2
       // 
-      this.splitContainer2.Panel2.Controls.Add(this.webBrowserHelp);
+      this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
       this.splitContainer2.Size = new System.Drawing.Size(888, 293);
       this.splitContainer2.SplitterDistance = 650;
       this.splitContainer2.TabIndex = 0;
@@ -132,13 +194,46 @@
       this.panelTextEditor.Size = new System.Drawing.Size(650, 293);
       this.panelTextEditor.TabIndex = 0;
       // 
+      // tabControl1
+      // 
+      this.tabControl1.Controls.Add(this.tabPageTexSlots);
+      this.tabControl1.Controls.Add(this.tabPageHelp);
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl1.Location = new System.Drawing.Point(0, 0);
+      this.tabControl1.Name = "tabControl1";
+      this.tabControl1.SelectedIndex = 0;
+      this.tabControl1.Size = new System.Drawing.Size(234, 293);
+      this.tabControl1.TabIndex = 1;
+      // 
+      // tabPageTexSlots
+      // 
+      this.tabPageTexSlots.Controls.Add(this.textureSlotsUserControl1);
+      this.tabPageTexSlots.Location = new System.Drawing.Point(4, 22);
+      this.tabPageTexSlots.Name = "tabPageTexSlots";
+      this.tabPageTexSlots.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPageTexSlots.Size = new System.Drawing.Size(226, 267);
+      this.tabPageTexSlots.TabIndex = 0;
+      this.tabPageTexSlots.Text = "Textures";
+      this.tabPageTexSlots.UseVisualStyleBackColor = true;
+      // 
+      // tabPageHelp
+      // 
+      this.tabPageHelp.Controls.Add(this.webBrowserHelp);
+      this.tabPageHelp.Location = new System.Drawing.Point(4, 22);
+      this.tabPageHelp.Name = "tabPageHelp";
+      this.tabPageHelp.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPageHelp.Size = new System.Drawing.Size(226, 267);
+      this.tabPageHelp.TabIndex = 1;
+      this.tabPageHelp.Text = "HLSL Help";
+      this.tabPageHelp.UseVisualStyleBackColor = true;
+      // 
       // webBrowserHelp
       // 
       this.webBrowserHelp.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.webBrowserHelp.Location = new System.Drawing.Point(0, 0);
+      this.webBrowserHelp.Location = new System.Drawing.Point(3, 3);
       this.webBrowserHelp.MinimumSize = new System.Drawing.Size(20, 20);
       this.webBrowserHelp.Name = "webBrowserHelp";
-      this.webBrowserHelp.Size = new System.Drawing.Size(234, 293);
+      this.webBrowserHelp.Size = new System.Drawing.Size(220, 261);
       this.webBrowserHelp.TabIndex = 0;
       // 
       // _outputWindow
@@ -155,38 +250,31 @@
       this._outputWindow.Size = new System.Drawing.Size(888, 103);
       this._outputWindow.TabIndex = 0;
       // 
-      // fileToolStripMenuItem
+      // textureSlotsUserControl1
       // 
-      this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItemExit});
-      this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-      this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 23);
-      this.fileToolStripMenuItem.Text = "File";
+      this.textureSlotsUserControl1.AutoScroll = true;
+      this.textureSlotsUserControl1.AutoScrollMinSize = new System.Drawing.Size(0, 880);
+      this.textureSlotsUserControl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+      this.textureSlotsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.textureSlotsUserControl1.Game1 = null;
+      this.textureSlotsUserControl1.Location = new System.Drawing.Point(3, 3);
+      this.textureSlotsUserControl1.Name = "textureSlotsUserControl1";
+      this.textureSlotsUserControl1.Size = new System.Drawing.Size(220, 261);
+      this.textureSlotsUserControl1.TabIndex = 0;
       // 
-      // exitToolStripMenuItemExit
+      // saveAsToolStripMenuItemSaveAs
       // 
-      this.exitToolStripMenuItemExit.Name = "exitToolStripMenuItemExit";
-      this.exitToolStripMenuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-      this.exitToolStripMenuItemExit.Size = new System.Drawing.Size(152, 22);
-      this.exitToolStripMenuItemExit.Text = "Exit";
-      this.exitToolStripMenuItemExit.Click += new System.EventHandler(this.Evt_Exit);
+      this.saveAsToolStripMenuItemSaveAs.Name = "saveAsToolStripMenuItemSaveAs";
+      this.saveAsToolStripMenuItemSaveAs.Size = new System.Drawing.Size(152, 22);
+      this.saveAsToolStripMenuItemSaveAs.Text = "Save as...";
+      this.saveAsToolStripMenuItemSaveAs.Click += new System.EventHandler(this.saveAsToolStripMenuItemSaveAs_Click);
       // 
-      // buildToolStripMenuItem
+      // newToolStripMenuItemNew
       // 
-      this.buildToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buildShaderF5ToolStripMenuItem});
-      this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-      this.buildToolStripMenuItem.Size = new System.Drawing.Size(46, 23);
-      this.buildToolStripMenuItem.Text = "Build";
-      // 
-      // buildShaderF5ToolStripMenuItem
-      // 
-      this.buildShaderF5ToolStripMenuItem.Image = global::MGShaderEditor.Properties.Resources.servicerunning;
-      this.buildShaderF5ToolStripMenuItem.Name = "buildShaderF5ToolStripMenuItem";
-      this.buildShaderF5ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-      this.buildShaderF5ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-      this.buildShaderF5ToolStripMenuItem.Text = "Build Shader";
-      this.buildShaderF5ToolStripMenuItem.Click += new System.EventHandler(this.buildShaderToolStripMenuItem_Click);
+      this.newToolStripMenuItemNew.Name = "newToolStripMenuItemNew";
+      this.newToolStripMenuItemNew.Size = new System.Drawing.Size(152, 22);
+      this.newToolStripMenuItemNew.Text = "New";
+      this.newToolStripMenuItemNew.Click += new System.EventHandler(this.newToolStripMenuItemNew_Click);
       // 
       // Form1
       // 
@@ -211,6 +299,9 @@
       this.splitContainer2.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
       this.splitContainer2.ResumeLayout(false);
+      this.tabControl1.ResumeLayout(false);
+      this.tabPageTexSlots.ResumeLayout(false);
+      this.tabPageHelp.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -231,6 +322,14 @@
     private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItemExit;
     private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem buildShaderF5ToolStripMenuItem;
+    private System.Windows.Forms.TabControl tabControl1;
+    private System.Windows.Forms.TabPage tabPageTexSlots;
+    private System.Windows.Forms.TabPage tabPageHelp;
+    private TextureSlotsUserControl textureSlotsUserControl1;
+    private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItemLoad;
+    private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItemSave;
+    private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItemNew;
+    private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItemSaveAs;
   }
 }
 

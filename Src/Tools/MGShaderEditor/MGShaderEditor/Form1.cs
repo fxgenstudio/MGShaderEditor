@@ -9,6 +9,7 @@ using TwoMGFX;
 using NShader;
 using NShader.Lexer;
 using Primitives3D;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MGShaderEditor
 {
@@ -18,6 +19,7 @@ namespace MGShaderEditor
     Scintilla m_scintillaCtrl;
     Game1 m_game;
     BindingList<GeometricPrimitive> m_primitivesList;
+    string m_strCurrentEffectFile;
     #endregion
 
     /// <summary>
@@ -103,18 +105,26 @@ namespace MGShaderEditor
       m_primitivesList.Add(new TorusPrimitive(gd));
       m_primitivesList.Add(new TeapotPrimitive(gd));
 
+
+      //UI init
       toolStripComboBoxModel.ComboBox.DataSource = m_primitivesList;
+      textureSlotsUserControl1.Game1 = m_game;
+
+      //Load default textures
+      textureSlotsUserControl1.SetTextureSlot(0, "texture01.jpg");
 
       //IDLE event for 3D Drawing
       Application.Idle += Application_Idle;
 
       //Start Default effect
-      var stream = File.OpenText("SimpleColor.fx");
-      var shader = stream.ReadToEnd();
-      m_scintillaCtrl.Text = shader;
-      stream.Close();
+      using (var stream = File.OpenText("SimpleColor.fx"))
+      {
+        var shader = stream.ReadToEnd();
+        m_scintillaCtrl.Text = shader;
+        m_scintillaCtrl.SetSavePoint();
 
-      DoBuild(shader);
+        DoBuild(shader);
+      }
 
       //Help
       webBrowserHelp.Navigate(Path.Combine(Environment.CurrentDirectory, "HLSL_Help.html"));
@@ -126,7 +136,14 @@ namespace MGShaderEditor
     /// </summary>
     private void Application_Idle(object sender, EventArgs e)
     {
-      m_game.RunOneFrame();
+      try
+      {
+        m_game.RunOneFrame();
+      }
+      catch (Exception)
+      {
+      }
+      
       Invalidate();
     }
 
@@ -158,12 +175,150 @@ namespace MGShaderEditor
     }
 
     /// <summary>
+    /// New FX
+    /// </summary>
+    private void newToolStripMenuItemNew_Click(object sender, EventArgs e)
+    {
+      if (m_scintillaCtrl.Modified==true)
+      {
+        var ret = MessageBox.Show("Save current effect before ?", this.Text, MessageBoxButtons.YesNoCancel);
+        if (ret == System.Windows.Forms.DialogResult.Cancel)
+          return;
+
+        if (ret == System.Windows.Forms.DialogResult.Yes)
+        {
+          saveToolStripMenuItemSave_Click(sender, e);
+        }
+      }
+
+      SetCurrentEffectFileName(null);
+
+      //Reset to default shader
+      using (var stream = File.OpenText("SimpleColor.fx"))
+      {
+        var shader = stream.ReadToEnd();
+        m_scintillaCtrl.Text = shader;
+        m_scintillaCtrl.SetSavePoint();
+
+        DoBuild(shader);
+      }
+    }
+
+    private void SetCurrentEffectFileName(string _strFxName)
+    {
+      m_strCurrentEffectFile = _strFxName;
+      Text = string.Format("MGShaderEditor - {0}", m_strCurrentEffectFile);
+    }
+
+    /// <summary>
+    /// Load .FX
+    /// </summary>
+    private void loadToolStripMenuItemLoad_Click(object sender, EventArgs e)
+    {
+      //Show FileDialog
+      OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+      openFileDialog1.Filter = "effect files (*.fx)|*.fx|All files (*.*)|*.*";
+      openFileDialog1.RestoreDirectory = true;
+
+      if (openFileDialog1.ShowDialog() == DialogResult.OK)
+      {
+        try
+        {
+          //Load Effect
+          using (var stream = File.OpenText( openFileDialog1.FileName ) )
+          {
+            var shader = stream.ReadToEnd();
+            m_scintillaCtrl.Text = shader;
+            m_scintillaCtrl.SetSavePoint();
+
+            SetCurrentEffectFileName(openFileDialog1.FileName);
+
+            DoBuild(shader);
+          }
+
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+        }
+      }
+    }
+
+    /// <summary>
+    /// Save .FX
+    /// </summary>
+    private void saveToolStripMenuItemSave_Click(object sender, EventArgs e)
+    {
+      //Filename not specified, show save file dialog
+      if (string.IsNullOrEmpty(m_strCurrentEffectFile)==true)
+      {
+        saveAsToolStripMenuItemSaveAs_Click(sender, e);
+        return;
+      }
+
+      //Save to current filename
+      try
+      {
+        //Save Effect
+        using (var stream = File.CreateText(m_strCurrentEffectFile))
+        {
+          stream.Write(m_scintillaCtrl.Text);
+          m_scintillaCtrl.SetSavePoint();
+        }
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error: Could not write file to disk. Original error: " + ex.Message);
+      }
+    }
+
+    /// <summary>
+    /// Save As .FX
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void saveAsToolStripMenuItemSaveAs_Click(object sender, EventArgs e)
+    {
+      //Show FileDialog
+      SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+      saveFileDialog1.Filter = "effect files (*.fx)|*.fx|All files (*.*)|*.*";
+      saveFileDialog1.RestoreDirectory = true;
+
+      if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+      {
+        try
+        {
+          //Save Effect
+          using (var stream = File.CreateText(saveFileDialog1.FileName))
+          {
+            stream.Write(m_scintillaCtrl.Text);
+            m_scintillaCtrl.SetSavePoint();
+
+            SetCurrentEffectFileName(saveFileDialog1.FileName);
+          }
+
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("Error: Could not write file to disk. Original error: " + ex.Message);
+        }
+      }
+
+    }
+
+
+    /// <summary>
     /// Exit application
     /// </summary>
     private void Evt_Exit(object sender, EventArgs e)
     {
       Close();
     }
+
+
 
     #region -- HLSL Builder Methods  --
     bool DoBuild(string commands)
@@ -263,6 +418,8 @@ namespace MGShaderEditor
         _outputWindow.AppendText(line);
     }
     #endregion
+
+
 
 
 

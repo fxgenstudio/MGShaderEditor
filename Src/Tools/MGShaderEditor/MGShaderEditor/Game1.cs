@@ -35,6 +35,8 @@ namespace MGShaderEditor
     private int m_nStartDragY;
     private bool m_bZoomingCamera;
 
+    Texture2D[] m_texSlots = new Texture2D[TextureSlotsUserControl.SlotsCount];
+
     #endregion
 
     #region -- Properties --
@@ -57,6 +59,18 @@ namespace MGShaderEditor
     {
       m_curEffect = new Effect(m_graphics.GraphicsDevice, _byCode);
     }
+
+    /// <summary>
+    /// Set Texture for a Slot
+    /// </summary>
+    public void SetTextureSlot(int _nSlotIdx, Texture2D _tex)
+    {
+      if (_nSlotIdx < 0 || _nSlotIdx >= TextureSlotsUserControl.SlotsCount)
+        return;
+
+      m_texSlots[_nSlotIdx] = _tex;
+    }
+
 
     /// <summary>
     /// Allows the game to perform any initialization it needs to before starting to run.
@@ -203,6 +217,8 @@ namespace MGShaderEditor
 
       if (m_curEffect != null)
       {
+
+        //Set Matrices
         var p1 = m_curEffect.Parameters["xWorld"];
         if (p1 != null)
           p1.SetValue(m_World);
@@ -215,8 +231,22 @@ namespace MGShaderEditor
         if (p3 != null)
           p3.SetValue(m_camera.Projection);
 
+
+        //Set textures
+        for (int i=0; i<m_texSlots.Length; i++)
+        {
+          if (m_texSlots[i] != null)
+          {
+            var p4 = m_curEffect.Parameters[ string.Format("xTexSlot{0}", i) ];
+            if (p4 != null)
+              p4.SetValue(m_texSlots[i]);
+          }
+        }
+
+        //Set pass0
         m_curEffect.CurrentTechnique.Passes[0].Apply();
 
+        //Draw
         CurPrimitive.Draw(m_curEffect);
 
       }
