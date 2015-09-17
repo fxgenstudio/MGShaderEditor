@@ -2,6 +2,11 @@ float4x4 xWorld;
 float4x4 xView;
 float4x4 xProjection;
 
+Texture2D  xTexSlot0;
+sampler TexSamplerSlot0 = sampler_state
+{
+	texture = <xTexSlot0>; magfilter = LINEAR; minfilter = LINEAR; mipfilter = LINEAR; AddressU = Wrap; AddressV = Wrap;
+};
 
 struct VertexShaderInput
 {
@@ -13,6 +18,7 @@ struct VertexShaderOutput
 {
 	float4 Position : SV_POSITION;
 	float4 Color    : COLOR0;
+	float2 TexCoords    : TEXCOORD0;
 };
 
 /////////////////////////////////////////////
@@ -31,6 +37,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	float4 worldNormal = mul(input.vertexNormal, xWorld);
 	output.Color = worldNormal;
 
+	output.TexCoords = viewPosition;
+
 	return output;
 }
 
@@ -39,7 +47,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 /////////////////////////////////////////////
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
-	return input.Color;
+	float4 tex0Color = tex2D(TexSamplerSlot0, input.TexCoords);
+	return saturate(tex0Color * input.Color);
 }
 
 /////////////////////////////////////////////
