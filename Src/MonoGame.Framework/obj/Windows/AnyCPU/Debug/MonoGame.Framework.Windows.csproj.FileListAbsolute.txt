@@ -67,7 +67,6 @@ E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\bin\Windows\AnyCPU\Debug\S
 E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\bin\Windows\AnyCPU\Debug\SharpDX.XAudio2.xml
 E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\bin\Windows\AnyCPU\Debug\SharpDX.XInput.xml
 E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\bin\Windows\AnyCPU\Debug\SharpDX.Direct3D9.xml
-E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\obj\Windows\AnyCPU\Debug\MonoGame.Framework.Windows.csprojResolveAssemblyReference.cache
 E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\obj\Windows\AnyCPU\Debug\MonoGame.Framework.dll
 E:\ProjectsTest\MGShaderEditor\Src\MonoGame.Framework\obj\Windows\AnyCPU\Debug\MonoGame.Framework.pdb
 D:\Projects\MonoGame\MGShaderEditor\Src\MonoGame.Framework\bin\Windows\AnyCPU\Debug\MonoGame.Framework.xml

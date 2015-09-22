@@ -137,7 +137,9 @@ namespace MGShaderEditor
 
       //Help
       webBrowserHelp.Navigate(Path.Combine(Environment.CurrentDirectory, "HLSL_Help.html"));
-
+      
+      //Test...
+      //HighlightWord("float4");
     }
 
     /// <summary>
@@ -322,9 +324,17 @@ namespace MGShaderEditor
     /// </summary>
     private void Evt_Exit(object sender, EventArgs e)
     {
+      Close();
+    }
+
+    /// <summary>
+    /// App Closing
+    /// </summary>
+    protected override void OnClosing(CancelEventArgs e)
+    {
       mruMenu.SaveToRegistry();
 
-      Close();
+      base.OnClosing(e);
     }
 
     /// <summary>
@@ -447,21 +457,58 @@ namespace MGShaderEditor
       if (text == null)
         return;
 
-      // We need to append newlines.
-      var line = string.Format("{0} {1}{2}", DateTime.Now.ToLongTimeString(), text, Environment.NewLine);
+      var lines = text.Split('\n');
 
-      // Write the output... safely if needed.
-      if (InvokeRequired)
-        _outputWindow.Invoke(new Action<string>(_outputWindow.AppendText), new object[] { line });
-      else
-        _outputWindow.AppendText(line);
+      foreach (var line in lines)
+      {
+        // We need to append newlines.
+        var fullline = string.Format("{0} {1}{2}", DateTime.Now.ToLongTimeString(), line, Environment.NewLine);
+
+        // Write the output... safely if needed.
+        if (InvokeRequired)
+          _outputWindow.Invoke(new Action<string>(_outputWindow.AppendText), new object[] { fullline });
+        else
+          _outputWindow.AppendText(fullline);
+      }
+
     }
     #endregion
 
 
+    /// <summary>
+    /// Test ...
+    /// </summary>
+    private void HighlightWord(string text)
+    {
+      // Indicators 0-7 could be in use by a lexer
+      // so we'll use indicator 8 to highlight words.
+      const int NUM = 8;
 
+      // Remove all uses of our indicator
+      m_scintillaCtrl.IndicatorCurrent = NUM;
+      m_scintillaCtrl.IndicatorClearRange(0, m_scintillaCtrl.TextLength);
 
+      // Update indicator appearance
+      m_scintillaCtrl.Indicators[NUM].Style = IndicatorStyle.StraightBox;
+      m_scintillaCtrl.Indicators[NUM].Under = true;
+      m_scintillaCtrl.Indicators[NUM].ForeColor = Color.Green;
+      m_scintillaCtrl.Indicators[NUM].OutlineAlpha = 50;
+      m_scintillaCtrl.Indicators[NUM].Alpha = 30;
 
+      // Search the document
+      m_scintillaCtrl.TargetStart = 0;
+      m_scintillaCtrl.TargetEnd = m_scintillaCtrl.TextLength;
+      m_scintillaCtrl.SearchFlags = SearchFlags.None;
+      while (m_scintillaCtrl.SearchInTarget(text) != -1)
+      {
+        // Mark the search results with the current indicator
+        m_scintillaCtrl.IndicatorFillRange(m_scintillaCtrl.TargetStart, m_scintillaCtrl.TargetEnd - m_scintillaCtrl.TargetStart);
+
+        // Search the remainder of the document
+        m_scintillaCtrl.TargetStart = m_scintillaCtrl.TargetEnd;
+        m_scintillaCtrl.TargetEnd = m_scintillaCtrl.TextLength;
+      }
+    }
 
 
   }

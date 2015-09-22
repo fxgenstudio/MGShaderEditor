@@ -6,3 +6,10 @@
 V1.2
 ----
 - Added Recent Files
+
+V1.3
+----
+- fixed on close MRU saving
+- fixed effect builder ouput text
+- TODO reset texture slot
+- Search file
