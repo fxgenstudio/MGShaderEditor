@@ -2,3 +2,7 @@
 ----
 - Added Textures Slots
 - Added Effect File Loading/Saving
+
+V1.2
+----
+- Added Recent Files

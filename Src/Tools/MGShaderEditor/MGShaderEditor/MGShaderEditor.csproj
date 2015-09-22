@@ -166,6 +166,7 @@
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
+    <Compile Include="MruStripMenu.cs" />
     <Compile Include="NShader\EnumMap.cs" />
     <Compile Include="NShader\ShaderToken.cs" />
     <Compile Include="OrbitCamera.cs" />

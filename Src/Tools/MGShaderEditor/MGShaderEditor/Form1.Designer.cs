@@ -31,9 +31,12 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.newToolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
       this.loadToolStripMenuItemLoad = new System.Windows.Forms.ToolStripMenuItem();
       this.saveToolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+      this.saveAsToolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
       this.exitToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+      this.recentFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.buildShaderF5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripComboBoxModel = new System.Windows.Forms.ToolStripComboBox();
@@ -44,12 +47,12 @@
       this.panelTextEditor = new System.Windows.Forms.Panel();
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPageTexSlots = new System.Windows.Forms.TabPage();
+      this.textureSlotsUserControl1 = new MGShaderEditor.TextureSlotsUserControl();
       this.tabPageHelp = new System.Windows.Forms.TabPage();
       this.webBrowserHelp = new System.Windows.Forms.WebBrowser();
       this._outputWindow = new System.Windows.Forms.TextBox();
-      this.textureSlotsUserControl1 = new MGShaderEditor.TextureSlotsUserControl();
-      this.saveAsToolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-      this.newToolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
       this.splitContainer1.Panel1.SuspendLayout();
@@ -84,10 +87,20 @@
             this.loadToolStripMenuItemLoad,
             this.saveToolStripMenuItemSave,
             this.saveAsToolStripMenuItemSaveAs,
+            this.toolStripSeparator1,
+            this.recentFilesToolStripMenuItem,
+            this.toolStripSeparator2,
             this.exitToolStripMenuItemExit});
       this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
       this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 23);
       this.fileToolStripMenuItem.Text = "File";
+      // 
+      // newToolStripMenuItemNew
+      // 
+      this.newToolStripMenuItemNew.Name = "newToolStripMenuItemNew";
+      this.newToolStripMenuItemNew.Size = new System.Drawing.Size(152, 22);
+      this.newToolStripMenuItemNew.Text = "New";
+      this.newToolStripMenuItemNew.Click += new System.EventHandler(this.newToolStripMenuItemNew_Click);
       // 
       // loadToolStripMenuItemLoad
       // 
@@ -103,6 +116,13 @@
       this.saveToolStripMenuItemSave.Text = "Save";
       this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.saveToolStripMenuItemSave_Click);
       // 
+      // saveAsToolStripMenuItemSaveAs
+      // 
+      this.saveAsToolStripMenuItemSaveAs.Name = "saveAsToolStripMenuItemSaveAs";
+      this.saveAsToolStripMenuItemSaveAs.Size = new System.Drawing.Size(152, 22);
+      this.saveAsToolStripMenuItemSaveAs.Text = "Save as...";
+      this.saveAsToolStripMenuItemSaveAs.Click += new System.EventHandler(this.saveAsToolStripMenuItemSaveAs_Click);
+      // 
       // exitToolStripMenuItemExit
       // 
       this.exitToolStripMenuItemExit.Name = "exitToolStripMenuItemExit";
@@ -110,6 +130,12 @@
       this.exitToolStripMenuItemExit.Size = new System.Drawing.Size(152, 22);
       this.exitToolStripMenuItemExit.Text = "Exit";
       this.exitToolStripMenuItemExit.Click += new System.EventHandler(this.Evt_Exit);
+      // 
+      // recentFilesToolStripMenuItem
+      // 
+      this.recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
+      this.recentFilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.recentFilesToolStripMenuItem.Text = "Recent Files";
       // 
       // buildToolStripMenuItem
       // 
@@ -216,6 +242,18 @@
       this.tabPageTexSlots.Text = "Textures";
       this.tabPageTexSlots.UseVisualStyleBackColor = true;
       // 
+      // textureSlotsUserControl1
+      // 
+      this.textureSlotsUserControl1.AutoScroll = true;
+      this.textureSlotsUserControl1.AutoScrollMinSize = new System.Drawing.Size(0, 880);
+      this.textureSlotsUserControl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+      this.textureSlotsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.textureSlotsUserControl1.Game1 = null;
+      this.textureSlotsUserControl1.Location = new System.Drawing.Point(3, 3);
+      this.textureSlotsUserControl1.Name = "textureSlotsUserControl1";
+      this.textureSlotsUserControl1.Size = new System.Drawing.Size(220, 261);
+      this.textureSlotsUserControl1.TabIndex = 0;
+      // 
       // tabPageHelp
       // 
       this.tabPageHelp.Controls.Add(this.webBrowserHelp);
@@ -250,31 +288,15 @@
       this._outputWindow.Size = new System.Drawing.Size(888, 103);
       this._outputWindow.TabIndex = 0;
       // 
-      // textureSlotsUserControl1
+      // toolStripSeparator1
       // 
-      this.textureSlotsUserControl1.AutoScroll = true;
-      this.textureSlotsUserControl1.AutoScrollMinSize = new System.Drawing.Size(0, 880);
-      this.textureSlotsUserControl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-      this.textureSlotsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.textureSlotsUserControl1.Game1 = null;
-      this.textureSlotsUserControl1.Location = new System.Drawing.Point(3, 3);
-      this.textureSlotsUserControl1.Name = "textureSlotsUserControl1";
-      this.textureSlotsUserControl1.Size = new System.Drawing.Size(220, 261);
-      this.textureSlotsUserControl1.TabIndex = 0;
+      this.toolStripSeparator1.Name = "toolStripSeparator1";
+      this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
       // 
-      // saveAsToolStripMenuItemSaveAs
+      // toolStripSeparator2
       // 
-      this.saveAsToolStripMenuItemSaveAs.Name = "saveAsToolStripMenuItemSaveAs";
-      this.saveAsToolStripMenuItemSaveAs.Size = new System.Drawing.Size(152, 22);
-      this.saveAsToolStripMenuItemSaveAs.Text = "Save as...";
-      this.saveAsToolStripMenuItemSaveAs.Click += new System.EventHandler(this.saveAsToolStripMenuItemSaveAs_Click);
-      // 
-      // newToolStripMenuItemNew
-      // 
-      this.newToolStripMenuItemNew.Name = "newToolStripMenuItemNew";
-      this.newToolStripMenuItemNew.Size = new System.Drawing.Size(152, 22);
-      this.newToolStripMenuItemNew.Text = "New";
-      this.newToolStripMenuItemNew.Click += new System.EventHandler(this.newToolStripMenuItemNew_Click);
+      this.toolStripSeparator2.Name = "toolStripSeparator2";
+      this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
       // 
       // Form1
       // 
@@ -330,6 +352,9 @@
     private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItemSave;
     private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItemNew;
     private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItemSaveAs;
+    private System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
   }
 }
 

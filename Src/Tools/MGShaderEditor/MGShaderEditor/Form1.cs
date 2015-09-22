@@ -10,6 +10,8 @@ using NShader;
 using NShader.Lexer;
 using Primitives3D;
 using Microsoft.Xna.Framework.Graphics;
+using JWC;
+using Microsoft.Win32;
 
 namespace MGShaderEditor
 {
@@ -20,6 +22,10 @@ namespace MGShaderEditor
     Game1 m_game;
     BindingList<GeometricPrimitive> m_primitivesList;
     string m_strCurrentEffectFile;
+
+    protected MruStripMenu mruMenu;
+    static string mruRegKey = "SOFTWARE\\PROCFXGEN\\MGShaderEditor";
+
     #endregion
 
     /// <summary>
@@ -77,8 +83,11 @@ namespace MGShaderEditor
       }
       m_scintillaCtrl.SetKeywords(0, sb.ToString());
 
-
+      //MRU
+      mruMenu = new MruStripMenuInline(fileToolStripMenuItem, recentFilesToolStripMenuItem, new MruStripMenu.ClickedHandler(OnMruFile), mruRegKey + "\\MRU", 16);
+      mruMenu.LoadFromRegistry();
     }
+
 
     /// <summary>
     /// Form Loaded
@@ -143,7 +152,7 @@ namespace MGShaderEditor
       catch (Exception)
       {
       }
-      
+
       Invalidate();
     }
 
@@ -179,7 +188,7 @@ namespace MGShaderEditor
     /// </summary>
     private void newToolStripMenuItemNew_Click(object sender, EventArgs e)
     {
-      if (m_scintillaCtrl.Modified==true)
+      if (m_scintillaCtrl.Modified == true)
       {
         var ret = MessageBox.Show("Save current effect before ?", this.Text, MessageBoxButtons.YesNoCancel);
         if (ret == System.Windows.Forms.DialogResult.Cancel)
@@ -223,25 +232,22 @@ namespace MGShaderEditor
 
       if (openFileDialog1.ShowDialog() == DialogResult.OK)
       {
-        try
-        {
-          //Load Effect
-          using (var stream = File.OpenText( openFileDialog1.FileName ) )
-          {
-            var shader = stream.ReadToEnd();
-            m_scintillaCtrl.Text = shader;
-            m_scintillaCtrl.SetSavePoint();
+        LoadEffectFile(openFileDialog1.FileName);
+      }
+    }
 
-            SetCurrentEffectFileName(openFileDialog1.FileName);
-
-            DoBuild(shader);
-          }
-
-        }
-        catch (Exception ex)
-        {
-          MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-        }
+    /// <summary>
+    /// Load effect from MRU
+    /// </summary>
+    private void OnMruFile(int number, String filename)
+    {
+      if (LoadEffectFile(filename) == false)
+      {
+        mruMenu.RemoveFile(filename);
+      }
+      else
+      {
+        mruMenu.SetFirstFile(number);
       }
     }
 
@@ -251,7 +257,7 @@ namespace MGShaderEditor
     private void saveToolStripMenuItemSave_Click(object sender, EventArgs e)
     {
       //Filename not specified, show save file dialog
-      if (string.IsNullOrEmpty(m_strCurrentEffectFile)==true)
+      if (string.IsNullOrEmpty(m_strCurrentEffectFile) == true)
       {
         saveAsToolStripMenuItemSaveAs_Click(sender, e);
         return;
@@ -298,6 +304,8 @@ namespace MGShaderEditor
             m_scintillaCtrl.SetSavePoint();
 
             SetCurrentEffectFileName(saveFileDialog1.FileName);
+
+            mruMenu.AddFile(saveFileDialog1.FileName);
           }
 
         }
@@ -309,15 +317,46 @@ namespace MGShaderEditor
 
     }
 
-
     /// <summary>
     /// Exit application
     /// </summary>
     private void Evt_Exit(object sender, EventArgs e)
     {
+      mruMenu.SaveToRegistry();
+
       Close();
     }
 
+    /// <summary>
+    /// Load Effect file
+    /// </summary>
+    private bool LoadEffectFile(string _strFileName)
+    {
+      try
+      {
+        //Load Effect
+        using (var stream = File.OpenText(_strFileName))
+        {
+          var shader = stream.ReadToEnd();
+          m_scintillaCtrl.Text = shader;
+          m_scintillaCtrl.SetSavePoint();
+
+          SetCurrentEffectFileName(_strFileName);
+
+          DoBuild(shader);
+
+          mruMenu.AddFile(_strFileName);
+        }
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+        return false;
+      }
+
+      return true;
+    }
 
 
     #region -- HLSL Builder Methods  --
