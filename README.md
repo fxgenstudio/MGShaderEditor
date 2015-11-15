@@ -1,4 +1,5 @@
 # MGShaderEditor
+
 Pixel and Vertex HLSL Shader Editor for MonoGame's Effects.
 
 Code: ProcFxGen
@@ -7,6 +8,7 @@ Powered by Monogame, 2MGFX, ScintillaNet and MRU .net class (Joe Woodbury)
 
 
 # Build
+
 MGShaderEditor executable is in Build folder.
 
 
@@ -19,3 +21,7 @@ Update 1.1
  
 Update 1.2
  - Added Recent Files
+
+# License
+
+MGShaderEditor is released under Microsoft Public License (Ms-PL).
