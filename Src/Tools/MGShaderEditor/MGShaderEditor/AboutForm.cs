@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MGShaderEditor
 {
-  public partial class FormAbout : Form
+  public partial class AboutForm : Form
   {
-    public FormAbout()
+    public AboutForm()
     {
       InitializeComponent();
 

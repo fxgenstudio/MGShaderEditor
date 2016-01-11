@@ -13,3 +13,9 @@ V1.3
 - fixed effect builder ouput text
 - TODO reset texture slot
 - Search file
+
+V1.4
+----
+- added find and replace dialog
+- removed Closing 3D view on Escape Key
+

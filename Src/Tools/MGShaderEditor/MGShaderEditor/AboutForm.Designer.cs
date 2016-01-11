@@ -1,6 +1,6 @@
 ﻿namespace MGShaderEditor
 {
-  partial class FormAbout
+  partial class AboutForm
   {
     /// <summary>
     /// Required designer variable.
@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
       this.linkLabel1 = new System.Windows.Forms.LinkLabel();
       this.labelAbout = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -65,18 +65,18 @@
       this.pictureBox1.TabIndex = 2;
       this.pictureBox1.TabStop = false;
       // 
-      // FormAbout
+      // AboutForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(523, 146);
+      this.ClientSize = new System.Drawing.Size(525, 150);
       this.Controls.Add(this.pictureBox1);
       this.Controls.Add(this.labelAbout);
       this.Controls.Add(this.linkLabel1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MinimizeBox = false;
-      this.Name = "FormAbout";
+      this.Name = "AboutForm";
       this.ShowInTaskbar = false;
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

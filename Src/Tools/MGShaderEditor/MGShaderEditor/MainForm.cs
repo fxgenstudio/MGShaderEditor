@@ -15,7 +15,7 @@ using Microsoft.Win32;
 
 namespace MGShaderEditor
 {
-  public partial class Form1 : Form, IEffectCompilerOutput
+  public partial class MainForm : Form, IEffectCompilerOutput
   {
     #region -- Fields --
     Scintilla m_scintillaCtrl;
@@ -31,7 +31,7 @@ namespace MGShaderEditor
     /// <summary>
     /// Ctor
     /// </summary>
-    public Form1()
+    public MainForm()
     {
       InitializeComponent();
 
@@ -68,6 +68,7 @@ namespace MGShaderEditor
 
       m_scintillaCtrl.Lexer = Lexer.Cpp;
 
+
       //Create keywords for HLSL
       StringBuilder sb = new StringBuilder();
       var map = new EnumMap<ShaderToken>();
@@ -87,6 +88,8 @@ namespace MGShaderEditor
       mruMenu = new MruStripMenuInline(fileToolStripMenuItem, recentFilesToolStripMenuItem, new MruStripMenu.ClickedHandler(OnMruFile), mruRegKey + "\\MRU", 16);
       mruMenu.LoadFromRegistry();
     }
+
+
 
 
     /// <summary>
@@ -180,7 +183,7 @@ namespace MGShaderEditor
     /// </summary>
     private void aboutToolStripMenuItemAbout_Click(object sender, EventArgs e)
     {
-      FormAbout about = new FormAbout();
+      AboutForm about = new AboutForm();
       about.Owner = this;
       about.ShowDialog();
     }
@@ -475,40 +478,23 @@ namespace MGShaderEditor
     #endregion
 
 
-    /// <summary>
-    /// Test ...
-    /// </summary>
-    private void HighlightWord(string text)
+    #region -- Find and Replace --
+
+    SearchReplaceForm m_searchReplaceFrom = new SearchReplaceForm();
+
+    private void searchToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      // Indicators 0-7 could be in use by a lexer
-      // so we'll use indicator 8 to highlight words.
-      const int NUM = 8;
-
-      // Remove all uses of our indicator
-      m_scintillaCtrl.IndicatorCurrent = NUM;
-      m_scintillaCtrl.IndicatorClearRange(0, m_scintillaCtrl.TextLength);
-
-      // Update indicator appearance
-      m_scintillaCtrl.Indicators[NUM].Style = IndicatorStyle.StraightBox;
-      m_scintillaCtrl.Indicators[NUM].Under = true;
-      m_scintillaCtrl.Indicators[NUM].ForeColor = Color.Green;
-      m_scintillaCtrl.Indicators[NUM].OutlineAlpha = 50;
-      m_scintillaCtrl.Indicators[NUM].Alpha = 30;
-
-      // Search the document
-      m_scintillaCtrl.TargetStart = 0;
-      m_scintillaCtrl.TargetEnd = m_scintillaCtrl.TextLength;
-      m_scintillaCtrl.SearchFlags = SearchFlags.None;
-      while (m_scintillaCtrl.SearchInTarget(text) != -1)
-      {
-        // Mark the search results with the current indicator
-        m_scintillaCtrl.IndicatorFillRange(m_scintillaCtrl.TargetStart, m_scintillaCtrl.TargetEnd - m_scintillaCtrl.TargetStart);
-
-        // Search the remainder of the document
-        m_scintillaCtrl.TargetStart = m_scintillaCtrl.TargetEnd;
-        m_scintillaCtrl.TargetEnd = m_scintillaCtrl.TextLength;
-      }
+      m_searchReplaceFrom.SetFind(m_scintillaCtrl);
+      m_searchReplaceFrom.Show(this);
     }
+
+    private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      m_searchReplaceFrom.SetReplace(m_scintillaCtrl);
+      m_searchReplaceFrom.Show(this);
+    }
+
+    #endregion
 
 
   }
