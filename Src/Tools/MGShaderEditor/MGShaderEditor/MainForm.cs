@@ -12,6 +12,8 @@ using Primitives3D;
 using Microsoft.Xna.Framework.Graphics;
 using JWC;
 using Microsoft.Win32;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace MGShaderEditor
 {
@@ -387,7 +389,9 @@ namespace MGShaderEditor
         options.SourceFile = string.Empty;
         options.OutputFile = string.Empty;
 
-        shaderInfo = ShaderInfo.FromString(commands, "\\", options, this);
+        var strpathApp = Path.GetDirectoryName ( Process.GetCurrentProcess().MainModule.FileName );
+
+        shaderInfo = ShaderInfo.FromString(commands, strpathApp, options, this);
 
       }
       catch (Exception ex)

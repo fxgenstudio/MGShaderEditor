@@ -237,6 +237,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\servicerunning.ico" />
     <Content Include="HLSL_Help.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
