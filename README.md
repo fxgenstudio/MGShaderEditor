@@ -30,6 +30,9 @@ Update 1.4
  - added find and replace dialog
  - removed Closing 3D view on Escape Key
 
+Update 1.5
+ - Fix Shader #Include
+
 
 # License
 
