@@ -6,7 +6,7 @@ Code: ProcFxGen
 
 Powered by Monogame, 2MGFX, ScintillaNet and MRU .net class (Joe Woodbury)
 
-![MGShaderEditor](https://procfxgen.files.wordpress.com/2015/09/mgshadereditor2.png)
+![MGShaderEditor](https://procfxgen.files.wordpress.com/2016/09/mgshadereditorv1_6.png)
 
 # Build
 
