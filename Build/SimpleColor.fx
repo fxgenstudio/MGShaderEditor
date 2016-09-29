@@ -1,11 +1,24 @@
+/////////////////////////////////////////////
+// Parameters
+/////////////////////////////////////////////
+
+//FloatParam("xFactor", 0.0, 10.0) = 0.5
+//Texture2DParam("xAmbiantTex" ) = 0
+
+/////////////////////////////////////////////
+// Declarations
+/////////////////////////////////////////////
+
 float4x4 xWorld;
 float4x4 xView;
 float4x4 xProjection;
 
-Texture2D  xTexSlot0;
-sampler TexSamplerSlot0 = sampler_state
+float xFactor;
+
+Texture2D  xAmbiantTex;
+sampler TexSamplerAmbient = sampler_state
 {
-	texture = <xTexSlot0>; magfilter = LINEAR; minfilter = LINEAR; mipfilter = LINEAR; AddressU = Wrap; AddressV = Wrap;
+	texture = <xAmbiantTex>; magfilter = LINEAR; minfilter = LINEAR; mipfilter = LINEAR; AddressU = Wrap; AddressV = Wrap;
 };
 
 struct VertexShaderInput
@@ -47,8 +60,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 /////////////////////////////////////////////
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
-	float4 tex0Color = tex2D(TexSamplerSlot0, input.TexCoords);
-	return saturate(tex0Color * input.Color);
+	float4 tex0Color = tex2D(TexSamplerAmbient, input.TexCoords);
+	return saturate(tex0Color * input.Color) * xFactor;
 }
 
 /////////////////////////////////////////////

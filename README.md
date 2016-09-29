@@ -20,7 +20,7 @@ Update 1.1
  - added files management
  
 Update 1.2
- - Added Recent Files
+ - added Recent Files
 
 Update 1.3
  - fixed on close MRU saving
@@ -31,8 +31,12 @@ Update 1.4
  - removed Closing 3D view on Escape Key
 
 Update 1.5
- - Fix Shader #Include
+ - fixed Shader #Include
 
+Update 1.6
+ - added float parameter support in .fx for UI
+ - added texture2D parameter support in .fx for UI
+ - added parameters view for shader test
 
 # License
 

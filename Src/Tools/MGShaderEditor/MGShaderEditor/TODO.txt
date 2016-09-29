@@ -1,1 +1,12 @@
-﻿
+﻿Update 1.6
+[x] Float Parameters in script
+		ex. => FloatParam("xFactor", 0.0, 10.0) = 0.5
+
+[.] Color Parameters in script
+		ex. => ColorParam("Ambiant" ) = (.34,.85,.92, 1.0)
+
+[x] Texture2D Parameters in script
+		ex. => Texture2DParam("xTexSlot0" ) = "0"
+
+[x] Display Slider for Float Parameters
+

@@ -153,6 +153,10 @@
     <Compile Include="..\..\2MGFX\TextureFilterType.cs">
       <Link>2MGFX\TextureFilterType.cs</Link>
     </Compile>
+    <Compile Include="Controls\SlideCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SlideCtrl.Designer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,16 +190,24 @@
     <Compile Include="SearchReplaceForm.Designer.cs">
       <DependentUpon>SearchReplaceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShaderParametersUserControl.cs" />
+    <Compile Include="ShaderParametersUserControl.Designer.cs">
+      <DependentUpon>ShaderParametersUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextureSlotsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TextureSlotsUserControl.Designer.cs">
       <DependentUpon>TextureSlotsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIParameters.cs" />
     <Content Include="Texture01.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TODO.txt" />
+    <EmbeddedResource Include="Controls\SlideCtrl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +230,9 @@
     </Content>
     <EmbeddedResource Include="SearchReplaceForm.resx">
       <DependentUpon>SearchReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShaderParametersUserControl.resx">
+      <DependentUpon>ShaderParametersUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TextureSlotsUserControl.resx">
       <DependentUpon>TextureSlotsUserControl.cs</DependentUpon>
