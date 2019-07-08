@@ -3,3 +3,8 @@
 ################################################################################
 
 /Src/.vs/MonoGame.Framework.Windows/v16/Server/sqlite3/db.lock
+/.vs
+/Src/.vs/MonoGame.Framework.Windows/v16
+/Src/MonoGame.Framework
+/Src/Tools/2MGFX/obj/Windows/AnyCPU
+/Src/Tools/MGShaderEditor/.vs/MGShaderEditor

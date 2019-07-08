@@ -89,9 +89,6 @@ namespace MGShaderEditor
             mruMenu.LoadFromRegistry();
         }
 
-
-
-
         /// <summary>
         /// Form Loaded
         /// </summary>
@@ -371,7 +368,6 @@ namespace MGShaderEditor
             return true;
         }
 
-
         #region -- HLSL Builder Methods  --
         bool DoBuild(string _effectSource)
         {
@@ -482,7 +478,6 @@ namespace MGShaderEditor
         }
         #endregion
 
-
         #region --- UI Parameters ---
         enum ParamType { eUnknow, eFloat, Texture2D }
 
@@ -555,7 +550,7 @@ namespace MGShaderEditor
                 value = value.Replace(" ", "");
 
                 //Add Param
-                if (paramtype==ParamType.eFloat)
+                if (paramtype == ParamType.eFloat)
                     Parse_FloatParam(inputs, value);
                 else if (paramtype == ParamType.Texture2D)
                     Parse_Texture2DParam(inputs, value);
@@ -606,10 +601,51 @@ namespace MGShaderEditor
             m_searchReplaceFrom.Show(this);
         }
 
+
         #endregion
 
+        #region Preview Screen Size changes
 
+        private void _320x240ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeWindowSize(320, 240);
+        }
+
+        private void _480x320ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeWindowSize(480, 320);
+        }
+
+        private void _640x480ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeWindowSize(640, 480);
+        }
+
+        private void _800x600ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeWindowSize(800, 600);
+        }
+
+        private void _1024x768ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeWindowSize(1024, 768);
+        }
+
+        #endregion
+
+        #region Render Modes 
+
+        private void _3dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeRenderMode(Game1.RenderMode.Default);
+        }
+
+        private void _2DToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.m_game.ChangeRenderMode(Game1.RenderMode.FullScreen);
+        }
+
+        #endregion
     }
-
 
 }

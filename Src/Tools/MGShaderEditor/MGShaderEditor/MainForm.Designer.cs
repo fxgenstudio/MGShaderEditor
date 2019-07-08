@@ -1,33 +1,33 @@
 ﻿namespace MGShaderEditor
 {
-  partial class MainForm
-  {
-    /// <summary>
-    /// Required designer variable.
-    /// </summary>
-    private System.ComponentModel.IContainer components = null;
-
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    partial class MainForm
     {
-      if (disposing && (components != null))
-      {
-        components.Dispose();
-      }
-      base.Dispose(disposing);
-    }
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-    #region Windows Form Designer generated code
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent()
-    {
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +44,16 @@
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildShaderF5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.previewToolStripMenutItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x240ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x300ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x480ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x600ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x768ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxModel = new System.Windows.Forms.ToolStripComboBox();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,12 +61,12 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.panelTextEditor = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageParameters = new System.Windows.Forms.TabPage();
+            this.shaderParametersUserControl = new MGShaderEditor.ShaderParametersUserControl();
             this.tabPageTexSlots = new System.Windows.Forms.TabPage();
             this.textureSlotsUserControl1 = new MGShaderEditor.TextureSlotsUserControl();
             this.tabPageHelp = new System.Windows.Forms.TabPage();
             this.webBrowserHelp = new System.Windows.Forms.WebBrowser();
-            this.tabPageParameters = new System.Windows.Forms.TabPage();
-            this.shaderParametersUserControl = new MGShaderEditor.ShaderParametersUserControl();
             this._outputWindow = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -68,9 +78,9 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPageParameters.SuspendLayout();
             this.tabPageTexSlots.SuspendLayout();
             this.tabPageHelp.SuspendLayout();
-            this.tabPageParameters.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -79,6 +89,7 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.buildToolStripMenuItem,
+            this.previewToolStripMenutItem,
             this.toolStripComboBoxModel,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -199,6 +210,85 @@
             this.buildShaderF5ToolStripMenuItem.Text = "Build Shader";
             this.buildShaderF5ToolStripMenuItem.Click += new System.EventHandler(this.buildShaderToolStripMenuItem_Click);
             // 
+            // previewToolStripMenutItem
+            // 
+            this.previewToolStripMenutItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sizeToolStripMenuItem,
+            this.modeToolStripMenuItem});
+            this.previewToolStripMenutItem.Name = "previewToolStripMenutItem";
+            this.previewToolStripMenutItem.Size = new System.Drawing.Size(60, 23);
+            this.previewToolStripMenutItem.Text = "Preview";
+            // 
+            // sizeToolStripMenuItem
+            // 
+            this.sizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.x240ToolStripMenuItem,
+            this.x300ToolStripMenuItem,
+            this.x480ToolStripMenuItem,
+            this.x600ToolStripMenuItem,
+            this.x768ToolStripMenuItem});
+            this.sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
+            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sizeToolStripMenuItem.Text = "Size";
+            // 
+            // x240ToolStripMenuItem
+            // 
+            this.x240ToolStripMenuItem.Name = "x240ToolStripMenuItem";
+            this.x240ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x240ToolStripMenuItem.Text = "320x240";
+            this.x240ToolStripMenuItem.Click += new System.EventHandler(this._320x240ToolStripMenuItem_Click);
+            // 
+            // x300ToolStripMenuItem
+            // 
+            this.x300ToolStripMenuItem.Name = "x300ToolStripMenuItem";
+            this.x300ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x300ToolStripMenuItem.Text = "480x320";
+            this.x300ToolStripMenuItem.Click += new System.EventHandler(this._480x320ToolStripMenuItem_Click);
+            // 
+            // x480ToolStripMenuItem
+            // 
+            this.x480ToolStripMenuItem.Name = "x480ToolStripMenuItem";
+            this.x480ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x480ToolStripMenuItem.Text = "640x480";
+            this.x480ToolStripMenuItem.Click += new System.EventHandler(this._640x480ToolStripMenuItem_Click);
+            // 
+            // x600ToolStripMenuItem
+            // 
+            this.x600ToolStripMenuItem.Name = "x600ToolStripMenuItem";
+            this.x600ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x600ToolStripMenuItem.Text = "800x600";
+            this.x600ToolStripMenuItem.Click += new System.EventHandler(this._800x600ToolStripMenuItem_Click);
+            // 
+            // x768ToolStripMenuItem
+            // 
+            this.x768ToolStripMenuItem.Name = "x768ToolStripMenuItem";
+            this.x768ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x768ToolStripMenuItem.Text = "1024x768";
+            this.x768ToolStripMenuItem.Click += new System.EventHandler(this._1024x768ToolStripMenuItem_Click);
+            // 
+            // modeToolStripMenuItem
+            // 
+            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dToolStripMenuItem,
+            this.dToolStripMenuItem1});
+            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modeToolStripMenuItem.Text = "Mode";
+            // 
+            // dToolStripMenuItem
+            // 
+            this.dToolStripMenuItem.Name = "dToolStripMenuItem";
+            this.dToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dToolStripMenuItem.Text = "3D";
+            this.dToolStripMenuItem.Click += new System.EventHandler(this._3dToolStripMenuItem_Click);
+            // 
+            // dToolStripMenuItem1
+            // 
+            this.dToolStripMenuItem1.Name = "dToolStripMenuItem1";
+            this.dToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dToolStripMenuItem1.Text = "2D";
+            this.dToolStripMenuItem1.Click += new System.EventHandler(this._2DToolStripMenuItem1_Click);
+            // 
             // toolStripComboBoxModel
             // 
             this.toolStripComboBoxModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -277,6 +367,26 @@
             this.tabControl1.Size = new System.Drawing.Size(234, 293);
             this.tabControl1.TabIndex = 1;
             // 
+            // tabPageParameters
+            // 
+            this.tabPageParameters.Controls.Add(this.shaderParametersUserControl);
+            this.tabPageParameters.Location = new System.Drawing.Point(4, 22);
+            this.tabPageParameters.Name = "tabPageParameters";
+            this.tabPageParameters.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageParameters.Size = new System.Drawing.Size(226, 267);
+            this.tabPageParameters.TabIndex = 2;
+            this.tabPageParameters.Text = "Parameters";
+            this.tabPageParameters.UseVisualStyleBackColor = true;
+            // 
+            // shaderParametersUserControl
+            // 
+            this.shaderParametersUserControl.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.shaderParametersUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.shaderParametersUserControl.Location = new System.Drawing.Point(3, 3);
+            this.shaderParametersUserControl.Name = "shaderParametersUserControl";
+            this.shaderParametersUserControl.Size = new System.Drawing.Size(220, 261);
+            this.shaderParametersUserControl.TabIndex = 0;
+            // 
             // tabPageTexSlots
             // 
             this.tabPageTexSlots.Controls.Add(this.textureSlotsUserControl1);
@@ -320,26 +430,6 @@
             this.webBrowserHelp.Size = new System.Drawing.Size(220, 261);
             this.webBrowserHelp.TabIndex = 0;
             // 
-            // tabPageParameters
-            // 
-            this.tabPageParameters.Controls.Add(this.shaderParametersUserControl);
-            this.tabPageParameters.Location = new System.Drawing.Point(4, 22);
-            this.tabPageParameters.Name = "tabPageParameters";
-            this.tabPageParameters.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageParameters.Size = new System.Drawing.Size(226, 267);
-            this.tabPageParameters.TabIndex = 2;
-            this.tabPageParameters.Text = "Parameters";
-            this.tabPageParameters.UseVisualStyleBackColor = true;
-            // 
-            // shaderParametersUserControl
-            // 
-            this.shaderParametersUserControl.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.shaderParametersUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shaderParametersUserControl.Location = new System.Drawing.Point(3, 3);
-            this.shaderParametersUserControl.Name = "shaderParametersUserControl";
-            this.shaderParametersUserControl.Size = new System.Drawing.Size(220, 261);
-            this.shaderParametersUserControl.TabIndex = 0;
-            // 
             // _outputWindow
             // 
             this._outputWindow.AcceptsReturn = true;
@@ -378,45 +468,55 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPageParameters.ResumeLayout(false);
             this.tabPageTexSlots.ResumeLayout(false);
             this.tabPageHelp.ResumeLayout(false);
-            this.tabPageParameters.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
-    }
+        }
 
-    #endregion
+        #endregion
 
-    private System.Windows.Forms.MenuStrip menuStrip1;
-    private System.Windows.Forms.SplitContainer splitContainer1;
-    private System.Windows.Forms.TextBox _outputWindow;
-    private System.Windows.Forms.ToolStripComboBox toolStripComboBoxModel;
-    private System.Windows.Forms.SplitContainer splitContainer2;
-    private System.Windows.Forms.WebBrowser webBrowserHelp;
-    private System.Windows.Forms.Panel panelTextEditor;
-    private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItemAbout;
-    private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItemExit;
-    private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem buildShaderF5ToolStripMenuItem;
-    private System.Windows.Forms.TabControl tabControl1;
-    private System.Windows.Forms.TabPage tabPageTexSlots;
-    private System.Windows.Forms.TabPage tabPageHelp;
-    private TextureSlotsUserControl textureSlotsUserControl1;
-    private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItemLoad;
-    private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItemSave;
-    private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItemNew;
-    private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItemSaveAs;
-    private System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
-    private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-    private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-    private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox _outputWindow;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxModel;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.WebBrowser webBrowserHelp;
+        private System.Windows.Forms.Panel panelTextEditor;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItemAbout;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItemExit;
+        private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buildShaderF5ToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageTexSlots;
+        private System.Windows.Forms.TabPage tabPageHelp;
+        private TextureSlotsUserControl textureSlotsUserControl1;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItemLoad;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItemSave;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItemNew;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItemSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPageParameters;
         private ShaderParametersUserControl shaderParametersUserControl;
+        private System.Windows.Forms.ToolStripMenuItem previewToolStripMenutItem;
+        private System.Windows.Forms.ToolStripMenuItem sizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x240ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x300ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x480ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x600ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x768ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
     }
 }
 

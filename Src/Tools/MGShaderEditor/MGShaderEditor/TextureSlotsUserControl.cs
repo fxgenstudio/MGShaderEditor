@@ -64,36 +64,37 @@ namespace MGShaderEditor
     }
     protected override void OnDoubleClick(EventArgs e)
     {
-      //Get slot idx
-      MouseEventArgs evt = e as MouseEventArgs;
-      int nSlotIdx = (evt.Y - AutoScrollPosition.Y )/ ClientSize.Width;
-      if (nSlotIdx < 0 || nSlotIdx >= SlotsCount)
-        return;
+        //Get slot idx
+        MouseEventArgs evt = e as MouseEventArgs;
 
-      //Show FileDialog
-      OpenFileDialog openFileDialog1 = new OpenFileDialog();
+        int nSlotIdx = (evt.Y - AutoScrollPosition.Y )/ ClientSize.Width;
+        if (nSlotIdx < 0 || nSlotIdx >= SlotsCount)
+            return;
 
-      openFileDialog1.Filter = "bmp files (*.bmp)|*.bmp|png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
-      openFileDialog1.RestoreDirectory = true;
+        //Show FileDialog
+        OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-      if (openFileDialog1.ShowDialog() == DialogResult.OK)
-      {
-        try
+        openFileDialog1.Filter = "bmp files (*.bmp)|*.bmp|png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+        openFileDialog1.FilterIndex = 4;
+        openFileDialog1.RestoreDirectory = true;
+
+        if (openFileDialog1.ShowDialog() == DialogResult.OK)
         {
-          SetTextureSlot(nSlotIdx, openFileDialog1.FileName);
+            try
+            {
+                SetTextureSlot(nSlotIdx, openFileDialog1.FileName);
+            }
+            catch (Exception ex)
+            {
+              MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+            }
         }
-        catch (Exception ex)
-        {
-          MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-        }
-      }
-
     }
     protected override void OnScroll(ScrollEventArgs se)
     {
-      base.OnScroll(se);
+        base.OnScroll(se);
 
-      Refresh();
+        Refresh();
     }
     protected override void OnPaint(PaintEventArgs e)
     {
@@ -138,6 +139,5 @@ namespace MGShaderEditor
 
     }
     #endregion
-
   }
 }
