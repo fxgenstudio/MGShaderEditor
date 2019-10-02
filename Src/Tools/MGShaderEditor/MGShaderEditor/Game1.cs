@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Primitives3D;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -38,6 +39,16 @@ namespace MGShaderEditor
 
         Texture2D[] m_texSlots = new Texture2D[TextureSlotsUserControl.SlotsCount];
 
+        public enum RenderMode
+        {
+            ImageProcessing,
+            FullScreen,
+            Default
+        }
+
+        private RenderMode CurrentMode;
+        private int u_time;
+
         #endregion
 
         #region -- Properties --
@@ -52,6 +63,8 @@ namespace MGShaderEditor
             m_graphics.PreferredBackBufferHeight = 200;
 
             Parameters = new List<UIbaseParam>();
+
+            CurrentMode = RenderMode.Default;
 
             Content.RootDirectory = "Content";
         }
@@ -124,7 +137,61 @@ namespace MGShaderEditor
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            switch (this.CurrentMode)
+            {
+                case RenderMode.FullScreen:
+                    {
+                        FullscreenUpdater(gameTime);
+                        break;
+                    }
+                case RenderMode.Default:
+                    {
+                        StandardUpdater(gameTime);
+                        break;
+                    }
+                case RenderMode.ImageProcessing:
+                    {
+                        Image2DUpdater(gameTime);
+                        break;
+                    }
+            }
 
+            base.Update(gameTime);
+        }
+
+        /// <summary>
+        /// Update for sprite effects
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void Image2DUpdater(GameTime gameTime)
+        {
+
+        }
+
+        /// <summary>
+        /// Update for fullscreen effects
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void FullscreenUpdater(GameTime gameTime)
+        {
+            if ((int)gameTime.TotalGameTime.TotalMilliseconds % 25 == 0)
+                this.u_time++;
+
+            float val = (float)Math.Sin(this.u_time / 15.0f);
+
+            if (m_curEffect.Parameters["Threshold"] != null)
+                m_curEffect.Parameters["Threshold"].SetValue(val);
+
+            if (m_curEffect.Parameters["Offset"] != null)
+                m_curEffect.Parameters["Offset"].SetValue(this.u_time);
+        }
+
+        /// <summary>
+        /// Original updater
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void StandardUpdater(GameTime gameTime)
+        {
             //Inputs
             var ms = Mouse.GetState();
             var ks = Keyboard.GetState();
@@ -215,9 +282,6 @@ namespace MGShaderEditor
                 m_fmodelRotation += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
             m_World = Matrix.CreateRotationX(m_fmodelRotation) * Matrix.CreateRotationY(m_fmodelRotation) * Matrix.CreateRotationZ(m_fmodelRotation);
-
-
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -226,8 +290,109 @@ namespace MGShaderEditor
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            switch (this.CurrentMode)
+            {
+                case RenderMode.FullScreen:
+                    {
+                        FullScreen2DRenderer(gameTime);
+                        break;
+                    }
+                case RenderMode.Default:
+                    {
+                        StandardRenderer(gameTime);
+                        break;
+                    }
+                case RenderMode.ImageProcessing:
+                    {
+                        Image2DRenderer(gameTime);
+                        break;
+                    }
+            }
+
+            base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Sprite renderer
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void Image2DRenderer(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.White);
+
+            try
+            {
+                PrepFrame();
+
+                m_spriteBatch.Begin(SpriteSortMode.Deferred,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    m_curEffect,
+                                    null);
+
+                m_spriteBatch.Draw(m_texSlots[0], new Rectangle(0, 0, m_texSlots[0].Width, m_texSlots[0].Height), Color.White);
+
+                m_spriteBatch.End();
+            }
+            catch (Exception Ex)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Fullscreen renderer
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void FullScreen2DRenderer(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
+
+            try
+            {
+                PrepFrame();
+
+                m_spriteBatch.Begin(SpriteSortMode.Deferred,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    m_curEffect,
+                                    null);
+
+                m_spriteBatch.Draw(m_texSlots[0], new Rectangle(0, 0, m_graphics.PreferredBackBufferWidth, m_graphics.PreferredBackBufferHeight), Color.White);
+
+                m_spriteBatch.End();
+            }
+            catch (Exception Ex)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Original renderer
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void StandardRenderer(GameTime gameTime)
+        {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            PrepFrame();
+
+            if (this.m_curEffect != null)
+                CurPrimitive.Draw(m_curEffect);
+
+            base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Paramters stuff
+        /// </summary>
+        private void PrepFrame()
+        {
             if (m_curEffect != null)
             {
 
@@ -243,7 +408,6 @@ namespace MGShaderEditor
                 var p3 = m_curEffect.Parameters["xProjection"];
                 if (p3 != null)
                     p3.SetValue(m_camera.Projection);
-
 
                 //Set textures
                 //for (int i = 0; i < m_texSlots.Length; i++)
@@ -262,7 +426,7 @@ namespace MGShaderEditor
                     var px = m_curEffect.Parameters[p.Name];
 
                     //UIFloatParam
-                    if (px!=null && px.ParameterType==EffectParameterType.Single && p is UIFloatParam)
+                    if (px != null && px.ParameterType == EffectParameterType.Single && p is UIFloatParam)
                     {
                         var floatParam = p as UIFloatParam;
                         px.SetValue(floatParam.Value);
@@ -275,7 +439,7 @@ namespace MGShaderEditor
                         int idx = 0;
                         if (int.TryParse(texParam.Value, out idx))
                         {
-                            if (idx >= 0 && idx < m_texSlots.Length && m_texSlots[idx]!=null)
+                            if (idx >= 0 && idx < m_texSlots.Length && m_texSlots[idx] != null)
                             {
                                 tex = m_texSlots[idx];
                             }
@@ -289,15 +453,36 @@ namespace MGShaderEditor
 
                 //Set pass0
                 m_curEffect.CurrentTechnique.Passes[0].Apply();
-
-                //Draw
-                CurPrimitive.Draw(m_curEffect);
-
             }
-
-            base.Draw(gameTime);
         }
 
+        /// <summary>
+        /// Resize render window
+        /// </summary>
+        /// <param name="W"></param>
+        /// <param name="H"></param>
+        public void ChangeWindowSize(int W, int H)
+        {
+            this.m_graphics.PreferredBackBufferHeight = H;
+            this.m_graphics.PreferredBackBufferWidth = W;
 
+            try
+            {
+                this.m_graphics.ApplyChanges();
+            }
+            catch (Exception Ex)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Change current mode
+        /// </summary>
+        /// <param name="Mode"></param>
+        public void ChangeRenderMode(RenderMode Mode)
+        {
+            this.CurrentMode = Mode;
+        }
     }
 }
